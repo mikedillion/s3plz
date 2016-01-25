@@ -12,7 +12,7 @@ def build():
         url = "https://github.com/enigma-io/s3plz",
         packages = ['s3plz'],
         install_requires = [
-            "boto",
+            "boto>=2.39.0",
             "python-dateutil",
             "pytz"
         ],
