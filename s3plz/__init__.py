@@ -286,12 +286,13 @@ class S3:
             "Your supplied credentials were invalid!"
 
         # lookup bucket
-        return conn.get_bucket(self.bucket_name)
-
-        # bucket doesn't exist.
-        raise ValueError(
-            'Bucket {} Does Not Exist!'\
-            .format(self.bucket_name))
+        if conn.lookup(self.bucket_name):
+            return conn.get_bucket(self.bucket_name)
+        else:
+            # bucket doesn't exist.
+            raise ValueError(
+                'Bucket {} Does Not Exist!'\
+                .format(self.bucket_name))
 
     def _gen_key_from_fp(self, filepath, **kw):
         """
