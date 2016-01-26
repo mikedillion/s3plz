@@ -291,8 +291,8 @@ class S3:
         else:
             # bucket doesn't exist.
             raise ValueError(
-                'Bucket {} Does Not Exist!'\
-                .format(self.bucket_name))
+                'Bucket {} Does Not Exist Or Current Permissions ' +
+                'Cannot Access It!'.format(self.bucket_name))
 
     def _gen_key_from_fp(self, filepath, **kw):
         """
